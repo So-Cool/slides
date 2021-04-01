@@ -18,7 +18,7 @@ jobs:
     - name: Build static slides 🔧🖼️
       run: ./build_static_slides.sh
     - name: Deploy 🚀
-      if: github.ref == 'refs/heads/main'
+      if: github.ref == 'refs/heads/master'
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
