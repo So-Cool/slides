@@ -16,7 +16,7 @@ jobs:
     - name: Install dependencies 💾
       run: pip install -r .binder/requirements.txt
     - name: Build static slides 🔧🖼️
-      run: build_static_slides.sh
+      run: ./build_static_slides.sh
     - name: Deploy 🚀
       if: github.ref == 'refs/heads/main'
       uses: JamesIves/github-pages-deploy-action@3.7.1
