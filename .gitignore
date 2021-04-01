@@ -1,0 +1,10 @@
+# MacOS
+.DS_Store
+
+# Python
+__pycache__
+.ipynb_checkpoints
+
+# Reveal.JS Slides
+*.slides.html
+_build

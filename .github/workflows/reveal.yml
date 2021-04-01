@@ -1,0 +1,27 @@
+name: Build 🔧 Reveal Slides 🖼️ and deploy 🚀 to GitHub Pages
+on: push
+jobs:
+  build-n-deploy:
+    name: Build and deploy
+    runs-on: ubuntu-18.04
+    steps:
+    - name: Checkout code 🛎️
+      uses: actions/checkout@v2.3.1
+      with:
+        persist-credentials: false
+    - name: Set up Python 3.7 🐍
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.7
+    - name: Install dependencies 💾
+      run: pip install -r .binder/requirements.txt
+    - name: Build static slides 🔧🖼️
+      run: build_static_slides.sh
+    - name: Deploy 🚀
+      if: github.ref == 'refs/heads/main'
+      uses: JamesIves/github-pages-deploy-action@3.7.1
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: _build
+        CLEAN: true
